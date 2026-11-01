@@ -110,7 +110,7 @@ input[type=range]{min-width:0}.toast{max-width:calc(100% - 24px);text-align:cent
     <section class="view" id="v-books" aria-label="Books"></section>
   </main>
   <div class="vbar" id="vbar"></div>
-  <nav class="tabs" id="tabs" aria-label="Bible Reader"><div class="brand">Bible Reader<span id="current-reading">Current reading</span></div>
+  <nav class="tabs" id="tabs" aria-label="Bible Reader"><div class="brand">Bible Reader<span>Berean Standard Bible</span></div>
     <button data-tab="today" class="on"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>Today</button>
     <button data-tab="read"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13C17 4 14 4.5 12 6zM12 6v13"/></svg>Read</button>
     <button data-tab="books"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 5h3v14H5zM10 5h3v14h-3zM15.5 6.5l2.8-.8 3 12.4-2.8.8z"/></svg>Books</button>
@@ -308,9 +308,6 @@ function readerMain() { // runs inside the WebView; talks to Scriptable only thr
     const ttl = $("#ttl"), read = v === "read" && st.cur;
     $("#prev").hidden = $("#next").hidden = !read;
     ttl.classList.toggle("btn", !!read);
-    const current = st.cur && book(st.cur.b);
-    const label = $("#current-reading");
-    if (label) label.textContent = current ? current.n + " " + st.cur.c + " · Chapter " + st.cur.c + " of " + current.c : "Current reading";
     if (read) { const b = book(st.cur.b); ttl.innerHTML = esc(b ? b.n : st.cur.b) + " " + st.cur.c + '<span class="car">▾</span>'; }
     else ttl.textContent = v === "today" ? "Today" : v === "books" ? "Books" : "Read";
     if (read) { $("#prev").disabled = !nbr(st.cur.b, st.cur.c, -1); $("#next").disabled = !nbr(st.cur.b, st.cur.c, 1); }
@@ -427,7 +424,7 @@ function readerMain() { // runs inside the WebView; talks to Scriptable only thr
       "<h4>Appearance</h4>" + seg("theme", [["auto", "Auto"], ["light", "Light"], ["dark", "Dark"]], st.set.theme) +
       "<h4>Daily plan</h4>" + (p ? '<p style="margin:0 0 10px">Day ' + p.day + " · " + esc(p.bn + " " + p.c + ":" + p.v) + "</p>" : "") +
       '<button class="btn full" id="restart">Restart at Genesis 1:1</button>' +
-      '<div class="foot">Reading preferences are saved on this device.</div>");
+      '<div class="foot">Scripture: ' + (p ? esc(p.tl) : "Berean Standard Bible") + " via bible.helloao.org</div>");
   }
   function confirmSheet(title, body, yesId, yesLabel) {
     sheet("<h2>" + esc(title) + '</h2><p style="margin:0 0 18px;color:var(--mu)">' + esc(body) + '</p><div class="row" style="margin-top:0"><button class="btn pri" id="' + yesId + '">' + esc(yesLabel) + '</button><button class="btn" id="no">Cancel</button></div>');
