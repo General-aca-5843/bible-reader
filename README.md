@@ -49,7 +49,7 @@ Use the browser, Scriptable, or both. They are independent: browser data does no
 
 ## Scripture API and attribution
 
-Bible text: Berean Standard Bible (BSB), provided through the HelloAO API.
+Scripture: **Berean Standard Bible (BSB)** via the [HelloAO Free Use Bible API](https://bible.helloao.org/docs/). The provider and translation are unchanged.
 
 - Books: `https://bible.helloao.org/api/BSB/books.json`
 - Chapters: `https://bible.helloao.org/api/BSB/{BOOK}/{CHAPTER}.simple.json`
