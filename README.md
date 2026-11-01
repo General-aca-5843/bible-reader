@@ -1,8 +1,8 @@
 # Bible Reader
 
-A cross-platform Bible reader with a standalone web app, daily reading plan, and optional iOS widgets powered by Scriptable.
+A Bible reader built with plain HTML, CSS, and JavaScript, alongside an optional Scriptable companion for iPhone widgets.
 
-**Release status:** implementation prepared; production verification is pending. GitHub Pages was not enabled at the inspected baseline. The web address below is a deployment target until Pages has been configured and verified.
+**Status:** The web reader is implemented. Live-site and device testing are still pending.
 
 [Web Reader — deployment target](https://general-aca-5843.github.io/bible-reader/) · [Source](https://github.com/General-aca-5843/bible-reader) · [iPhone Widgets](#iphone-widgets)
 
@@ -45,7 +45,8 @@ Use the browser, Scriptable, or both. They are independent: browser data does no
 | --- | --- |
 | `index.html` | Self-contained browser reader |
 | `Bible.js` | Original 606-line Scriptable companion, preserved without source changes |
-| `README.md` | Usage, attribution, deployment, and limitations |
+| `README.md` | Setup, attribution, and project notes |
+
 ## Scripture API and attribution
 
 Scripture: **Berean Standard Bible (BSB)** via the [HelloAO Free Use Bible API](https://bible.helloao.org/docs/). The provider and translation are unchanged.
@@ -61,15 +62,15 @@ Modern Safari, Chrome, Edge, or Firefox with JavaScript, Fetch, CSS Grid, media 
 
 Uncached Scripture needs Internet access. The application is not a fully offline-installable PWA: there is no service worker, and reopening the hosted HTML itself offline depends on the browser cache. Stored chapters are a best-effort cache, not a downloaded full Bible. Storage denial or exhausted quota produces a warning; changes may then survive only for the current visit. Clearing browser site data removes its preferences and progress.
 
-The interface preserves the source's settings. There was no adjustable line-spacing preference in the original script, so none has been invented. The browser uses its own navigation chrome; Scriptable's native Close/Share controls are not part of the web app.
+The web reader follows the original Scriptable settings. Scriptable's native Close and Share controls are not part of the browser version.
 
-## Verification status — November 1, 2026
+## Testing status
 
 JavaScript syntax checks and automated DOM/logic tests were run against saved responses fetched from the actual HelloAO BSB API. These tests cover book/chapter rendering, navigation, daily progression and wrap, preferences and position restoration, copying, keyboard handlers, dialog focus, offline cache, storage denial, and error/retry behavior. Tests use a DOM emulator; they do not establish visual layout, touch-device behavior, or real-browser compatibility.
 
-The books endpoint returned HTTP 200 and `Access-Control-Allow-Origin: *` for the intended Pages origin. This is header evidence, not a completed in-browser CORS test.
+The books API returned HTTP 200 with a permissive CORS header. Browser-based CORS testing is still needed.
 
-Still required before production sign-off:
+Still to test:
 
 - Rendered viewport checks at 320, 375, 390, 430, 768, 834, 1024, 1280, and 1440 CSS px; compare mobile appearance, sidebar placement, overflow, and state/scroll retention on resize.
 - Real-browser Fetch/CORS, clipboard, persistence, keyboard and touch checks; Safari/iPhone testing.
