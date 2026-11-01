@@ -39,19 +39,13 @@ The original companion also includes extra-large and Lock Screen accessory rende
 
 Use the browser, Scriptable, or both. They are independent: browser data does not automatically synchronize with Scriptable. Scriptable stores its settings, position, plan, and cache in its local documents directory under `Bible/`.
 
-## Repository and references
+## Repository files
 
 | File | Purpose |
 | --- | --- |
 | `index.html` | Self-contained browser reader |
 | `Bible.js` | Original 606-line Scriptable companion, preserved without source changes |
 | `README.md` | Usage, attribution, deployment, and limitations |
-| `screenshots/Bible_Reader_Screenshot_Grid.png` | Supplied reference grid, unchanged |
-
-![Supplied Bible Reader reference grid](screenshots/Bible_Reader_Screenshot_Grid.png)
-
-The supplied grid contains mislabeled panels and one unrelated Request Console image. It is retained as supplied; actual Bible Reader screenshots embedded in the coordinator handoff and the original source were used to guide implementation. This grid is a reference asset, not proof of the new browser application's test results.
-
 ## Scripture API and attribution
 
 Scripture: **Berean Standard Bible (BSB)** via the [HelloAO Free Use Bible API](https://bible.helloao.org/docs/). The provider and translation are unchanged.
